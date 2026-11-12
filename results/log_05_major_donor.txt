@@ -1,0 +1,321 @@
+[major_donor] 272,687 cells, 35,449 genes, 9 classes, 104 donors
+/Users/skysunmingyang/Documents/Columbia-F26/w4762/ml4fg/src/retpanel/splits.py:23: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  per_donor = pd.Series(fold).groupby(obs["donor_id"].values).nunique()
+
+=== fold 0: train 216,671 cells / 83 donors; test 56,016 cells / 21 donors (54s)
+         full_lr k=3000  macro-auPR=1.0000  macro-F1=0.9986  | Wang auPR=0.9666
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+             hvg k=  10  macro-auPR=0.5212  macro-F1=0.4939  | Wang auPR=0.3716
+              de k=  10  macro-auPR=0.9708  macro-F1=0.9258  | Wang auPR=0.7694
+          random k=  10  macro-auPR=0.3401  macro-F1=0.3353  | Wang auPR=0.2315
+          random k=  10  macro-auPR=0.1672  macro-F1=0.1397  | Wang auPR=0.1794
+          random k=  10  macro-auPR=0.3641  macro-F1=0.3640  | Wang auPR=0.2077
+             hvg k=  25  macro-auPR=0.7966  macro-F1=0.7579  | Wang auPR=0.6236
+              de k=  25  macro-auPR=0.9974  macro-F1=0.9823  | Wang auPR=0.8927
+          random k=  25  macro-auPR=0.6472  macro-F1=0.6100  | Wang auPR=0.3896
+          random k=  25  macro-auPR=0.4860  macro-F1=0.4351  | Wang auPR=0.2749
+          random k=  25  macro-auPR=0.4567  macro-F1=0.4207  | Wang auPR=0.2610
+             hvg k=  50  macro-auPR=0.9741  macro-F1=0.9384  | Wang auPR=0.8984
+              de k=  50  macro-auPR=0.9992  macro-F1=0.9921  | Wang auPR=0.9444
+          random k=  50  macro-auPR=0.7909  macro-F1=0.7153  | Wang auPR=0.4810
+          random k=  50  macro-auPR=0.7001  macro-F1=0.6466  | Wang auPR=0.4693
+          random k=  50  macro-auPR=0.7038  macro-F1=0.6495  | Wang auPR=0.4373
+             hvg k= 100  macro-auPR=0.9980  macro-F1=0.9877  | Wang auPR=0.9581
+              de k= 100  macro-auPR=0.9998  macro-F1=0.9965  | Wang auPR=0.9624
+          random k= 100  macro-auPR=0.8887  macro-F1=0.8082  | Wang auPR=0.6612
+          random k= 100  macro-auPR=0.9437  macro-F1=0.8796  | Wang auPR=0.6909
+          random k= 100  macro-auPR=0.8474  macro-F1=0.7730  | Wang auPR=0.6272
+             hvg k= 200  macro-auPR=0.9998  macro-F1=0.9958  | Wang auPR=0.9648
+              de k= 200  macro-auPR=0.9999  macro-F1=0.9979  | Wang auPR=0.9624
+          random k= 200  macro-auPR=0.9793  macro-F1=0.9336  | Wang auPR=0.8139
+          random k= 200  macro-auPR=0.9891  macro-F1=0.9576  | Wang auPR=0.8338
+          random k= 200  macro-auPR=0.9819  macro-F1=0.9446  | Wang auPR=0.8402
+  training concrete k=50
+  ep   0 T=1.582 cls=0.221 acc=0.939 adv=0.000 adv_acc=0.000 unique=42
+  ep   5 T=0.487 cls=0.022 acc=0.994 adv=0.000 adv_acc=0.000 unique=50
+  ep  10 T=0.150 cls=0.015 acc=0.996 adv=0.000 adv_acc=0.000 unique=50
+  ep  15 T=0.046 cls=0.012 acc=0.996 adv=0.000 adv_acc=0.000 unique=50
+  ep  20 T=0.014 cls=0.009 acc=0.997 adv=0.000 adv_acc=0.000 unique=50
+  ep  25 T=0.010 cls=0.007 acc=0.998 adv=0.000 adv_acc=0.000 unique=50
+  ep  29 T=0.010 cls=0.006 acc=0.998 adv=0.000 adv_acc=0.000 unique=50
+    concrete_mlp k=  50  macro-auPR=0.9997  macro-F1=0.9953  | Wang auPR=0.9316
+        concrete k=  50  macro-auPR=0.9996  macro-F1=0.9948  | Wang auPR=0.9485
+  training concrete_adv1 k=50
+  ep   0 T=1.582 cls=0.221 acc=0.939 adv=4.270 adv_acc=0.026 unique=38
+  ep   5 T=0.487 cls=0.051 acc=0.985 adv=4.228 adv_acc=0.035 unique=50
+  ep  10 T=0.150 cls=0.064 acc=0.981 adv=4.191 adv_acc=0.039 unique=50
+  ep  15 T=0.046 cls=0.065 acc=0.981 adv=4.153 adv_acc=0.046 unique=50
+  ep  20 T=0.014 cls=0.072 acc=0.978 adv=4.140 adv_acc=0.048 unique=50
+  ep  25 T=0.010 cls=0.070 acc=0.980 adv=4.121 adv_acc=0.049 unique=50
+  ep  29 T=0.010 cls=0.066 acc=0.981 adv=4.092 adv_acc=0.053 unique=50
+  concrete_adv1_mlp k=  50  macro-auPR=0.9982  macro-F1=0.9848  | Wang auPR=0.9182
+   concrete_adv1 k=  50  macro-auPR=0.9986  macro-F1=0.9879  | Wang auPR=0.9439
+
+=== fold 1: train 217,145 cells / 83 donors; test 55,542 cells / 21 donors (308s)
+         full_lr k=3000  macro-auPR=0.9998  macro-F1=0.9963  | Wang auPR=0.9682
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+             hvg k=  10  macro-auPR=0.5093  macro-F1=0.4816  | Wang auPR=0.3696
+              de k=  10  macro-auPR=0.9555  macro-F1=0.9094  | Wang auPR=0.7917
+          random k=  10  macro-auPR=0.2456  macro-F1=0.2082  | Wang auPR=0.1643
+          random k=  10  macro-auPR=0.2651  macro-F1=0.2325  | Wang auPR=0.2022
+          random k=  10  macro-auPR=0.2593  macro-F1=0.2408  | Wang auPR=0.1530
+             hvg k=  25  macro-auPR=0.7929  macro-F1=0.7587  | Wang auPR=0.6285
+              de k=  25  macro-auPR=0.9942  macro-F1=0.9770  | Wang auPR=0.9101
+          random k=  25  macro-auPR=0.5498  macro-F1=0.5164  | Wang auPR=0.3098
+          random k=  25  macro-auPR=0.2875  macro-F1=0.2631  | Wang auPR=0.1888
+          random k=  25  macro-auPR=0.4464  macro-F1=0.4330  | Wang auPR=0.3363
+             hvg k=  50  macro-auPR=0.9410  macro-F1=0.8971  | Wang auPR=0.8582
+              de k=  50  macro-auPR=0.9980  macro-F1=0.9885  | Wang auPR=0.9438
+          random k=  50  macro-auPR=0.6944  macro-F1=0.6320  | Wang auPR=0.3887
+          random k=  50  macro-auPR=0.6593  macro-F1=0.6088  | Wang auPR=0.3884
+          random k=  50  macro-auPR=0.6682  macro-F1=0.6167  | Wang auPR=0.4571
+             hvg k= 100  macro-auPR=0.9971  macro-F1=0.9860  | Wang auPR=0.9564
+              de k= 100  macro-auPR=0.9994  macro-F1=0.9935  | Wang auPR=0.9629
+          random k= 100  macro-auPR=0.9276  macro-F1=0.8643  | Wang auPR=0.6991
+          random k= 100  macro-auPR=0.8939  macro-F1=0.8267  | Wang auPR=0.7031
+          random k= 100  macro-auPR=0.7026  macro-F1=0.6483  | Wang auPR=0.5164
+             hvg k= 200  macro-auPR=0.9992  macro-F1=0.9924  | Wang auPR=0.9667
+              de k= 200  macro-auPR=0.9996  macro-F1=0.9944  | Wang auPR=0.9638
+          random k= 200  macro-auPR=0.9759  macro-F1=0.9340  | Wang auPR=0.8352
+          random k= 200  macro-auPR=0.9854  macro-F1=0.9502  | Wang auPR=0.8436
+          random k= 200  macro-auPR=0.9884  macro-F1=0.9574  | Wang auPR=0.8663
+  training concrete k=50
+  ep   0 T=1.582 cls=0.223 acc=0.937 adv=0.000 adv_acc=0.000 unique=39
+  ep   5 T=0.487 cls=0.020 acc=0.994 adv=0.000 adv_acc=0.000 unique=50
+  ep  10 T=0.150 cls=0.014 acc=0.996 adv=0.000 adv_acc=0.000 unique=50
+  ep  15 T=0.046 cls=0.012 acc=0.997 adv=0.000 adv_acc=0.000 unique=50
+  ep  20 T=0.014 cls=0.008 acc=0.997 adv=0.000 adv_acc=0.000 unique=50
+  ep  25 T=0.010 cls=0.007 acc=0.998 adv=0.000 adv_acc=0.000 unique=50
+  ep  29 T=0.010 cls=0.006 acc=0.998 adv=0.000 adv_acc=0.000 unique=50
+    concrete_mlp k=  50  macro-auPR=0.9988  macro-F1=0.9898  | Wang auPR=0.9357
+        concrete k=  50  macro-auPR=0.9988  macro-F1=0.9918  | Wang auPR=0.9436
+  training concrete_adv1 k=50
+  ep   0 T=1.582 cls=0.227 acc=0.936 adv=4.268 adv_acc=0.026 unique=42
+  ep   5 T=0.487 cls=0.050 acc=0.985 adv=4.223 adv_acc=0.035 unique=49
+  ep  10 T=0.150 cls=0.059 acc=0.982 adv=4.172 adv_acc=0.044 unique=50
+  ep  15 T=0.046 cls=0.065 acc=0.980 adv=4.155 adv_acc=0.046 unique=50
+  ep  20 T=0.014 cls=0.061 acc=0.981 adv=4.124 adv_acc=0.051 unique=50
+  ep  25 T=0.010 cls=0.055 acc=0.983 adv=4.090 adv_acc=0.055 unique=50
+  ep  29 T=0.010 cls=0.058 acc=0.983 adv=4.095 adv_acc=0.054 unique=50
+  concrete_adv1_mlp k=  50  macro-auPR=0.9959  macro-F1=0.9793  | Wang auPR=0.9353
+   concrete_adv1 k=  50  macro-auPR=0.9959  macro-F1=0.9830  | Wang auPR=0.9485
+
+=== fold 2: train 219,982 cells / 84 donors; test 52,705 cells / 20 donors (549s)
+         full_lr k=3000  macro-auPR=1.0000  macro-F1=0.9984  | Wang auPR=0.9671
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+             hvg k=  10  macro-auPR=0.5162  macro-F1=0.4914  | Wang auPR=0.3703
+              de k=  10  macro-auPR=0.9613  macro-F1=0.9137  | Wang auPR=0.7913
+          random k=  10  macro-auPR=0.2421  macro-F1=0.2449  | Wang auPR=0.1649
+          random k=  10  macro-auPR=0.2732  macro-F1=0.2288  | Wang auPR=0.1738
+          random k=  10  macro-auPR=0.1779  macro-F1=0.1410  | Wang auPR=0.1572
+             hvg k=  25  macro-auPR=0.8111  macro-F1=0.7735  | Wang auPR=0.6411
+              de k=  25  macro-auPR=0.9974  macro-F1=0.9801  | Wang auPR=0.9061
+          random k=  25  macro-auPR=0.4850  macro-F1=0.4331  | Wang auPR=0.3163
+          random k=  25  macro-auPR=0.3013  macro-F1=0.2810  | Wang auPR=0.1742
+          random k=  25  macro-auPR=0.3600  macro-F1=0.3423  | Wang auPR=0.2201
+             hvg k=  50  macro-auPR=0.9795  macro-F1=0.9491  | Wang auPR=0.9037
+              de k=  50  macro-auPR=0.9995  macro-F1=0.9912  | Wang auPR=0.9428
+          random k=  50  macro-auPR=0.6347  macro-F1=0.5891  | Wang auPR=0.4175
+          random k=  50  macro-auPR=0.8034  macro-F1=0.7400  | Wang auPR=0.5163
+          random k=  50  macro-auPR=0.6226  macro-F1=0.5838  | Wang auPR=0.3952
+             hvg k= 100  macro-auPR=0.9982  macro-F1=0.9891  | Wang auPR=0.9555
+              de k= 100  macro-auPR=0.9999  macro-F1=0.9969  | Wang auPR=0.9626
+          random k= 100  macro-auPR=0.9193  macro-F1=0.8469  | Wang auPR=0.6703
+          random k= 100  macro-auPR=0.9229  macro-F1=0.8542  | Wang auPR=0.7000
+          random k= 100  macro-auPR=0.9353  macro-F1=0.8733  | Wang auPR=0.7158
+             hvg k= 200  macro-auPR=0.9998  macro-F1=0.9964  | Wang auPR=0.9658
+              de k= 200  macro-auPR=1.0000  macro-F1=0.9976  | Wang auPR=0.9617
+          random k= 200  macro-auPR=0.9798  macro-F1=0.9376  | Wang auPR=0.8237
+          random k= 200  macro-auPR=0.9860  macro-F1=0.9500  | Wang auPR=0.8690
+          random k= 200  macro-auPR=0.9828  macro-F1=0.9446  | Wang auPR=0.8509
+  training concrete k=50
+  ep   0 T=1.582 cls=0.217 acc=0.939 adv=0.000 adv_acc=0.000 unique=45
+  ep   5 T=0.487 cls=0.024 acc=0.994 adv=0.000 adv_acc=0.000 unique=50
+  ep  10 T=0.150 cls=0.016 acc=0.996 adv=0.000 adv_acc=0.000 unique=50
+  ep  15 T=0.046 cls=0.012 acc=0.997 adv=0.000 adv_acc=0.000 unique=50
+  ep  20 T=0.014 cls=0.010 acc=0.997 adv=0.000 adv_acc=0.000 unique=50
+  ep  25 T=0.010 cls=0.007 acc=0.998 adv=0.000 adv_acc=0.000 unique=50
+  ep  29 T=0.010 cls=0.007 acc=0.998 adv=0.000 adv_acc=0.000 unique=50
+    concrete_mlp k=  50  macro-auPR=0.9998  macro-F1=0.9949  | Wang auPR=0.9289
+        concrete k=  50  macro-auPR=0.9998  macro-F1=0.9942  | Wang auPR=0.9485
+  training concrete_adv1 k=50
+  ep   0 T=1.582 cls=0.218 acc=0.940 adv=4.275 adv_acc=0.027 unique=39
+  ep   5 T=0.487 cls=0.052 acc=0.984 adv=4.226 adv_acc=0.036 unique=50
+  ep  10 T=0.150 cls=0.066 acc=0.980 adv=4.184 adv_acc=0.042 unique=50
+  ep  15 T=0.046 cls=0.072 acc=0.978 adv=4.151 adv_acc=0.047 unique=50
+  ep  20 T=0.014 cls=0.077 acc=0.977 adv=4.134 adv_acc=0.050 unique=50
+  ep  25 T=0.010 cls=0.073 acc=0.977 adv=4.119 adv_acc=0.053 unique=49
+  ep  29 T=0.010 cls=0.072 acc=0.978 adv=4.106 adv_acc=0.054 unique=49
+  concrete_adv1_mlp k=  50  macro-auPR=0.9986  macro-F1=0.9851  | Wang auPR=0.9344
+   concrete_adv1 k=  50  macro-auPR=0.9990  macro-F1=0.9894  | Wang auPR=0.9495
+
+=== fold 3: train 217,388 cells / 83 donors; test 55,299 cells / 21 donors (741s)
+         full_lr k=3000  macro-auPR=0.9998  macro-F1=0.9944  | Wang auPR=0.9668
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+             hvg k=  10  macro-auPR=0.5172  macro-F1=0.4897  | Wang auPR=0.3705
+              de k=  10  macro-auPR=0.9546  macro-F1=0.9090  | Wang auPR=0.7873
+          random k=  10  macro-auPR=0.1618  macro-F1=0.1258  | Wang auPR=0.1248
+          random k=  10  macro-auPR=0.2574  macro-F1=0.2500  | Wang auPR=0.1451
+          random k=  10  macro-auPR=0.2973  macro-F1=0.2830  | Wang auPR=0.2041
+             hvg k=  25  macro-auPR=0.8031  macro-F1=0.7643  | Wang auPR=0.6330
+              de k=  25  macro-auPR=0.9951  macro-F1=0.9743  | Wang auPR=0.8970
+          random k=  25  macro-auPR=0.4409  macro-F1=0.4248  | Wang auPR=0.2610
+          random k=  25  macro-auPR=0.4591  macro-F1=0.4417  | Wang auPR=0.3022
+          random k=  25  macro-auPR=0.5358  macro-F1=0.4993  | Wang auPR=0.3203
+             hvg k=  50  macro-auPR=0.9444  macro-F1=0.9039  | Wang auPR=0.8617
+              de k=  50  macro-auPR=0.9984  macro-F1=0.9874  | Wang auPR=0.9446
+          random k=  50  macro-auPR=0.7576  macro-F1=0.6930  | Wang auPR=0.5596
+          random k=  50  macro-auPR=0.6360  macro-F1=0.5858  | Wang auPR=0.4238
+          random k=  50  macro-auPR=0.4804  macro-F1=0.4758  | Wang auPR=0.3092
+             hvg k= 100  macro-auPR=0.9968  macro-F1=0.9856  | Wang auPR=0.9560
+              de k= 100  macro-auPR=0.9995  macro-F1=0.9937  | Wang auPR=0.9629
+          random k= 100  macro-auPR=0.8999  macro-F1=0.8330  | Wang auPR=0.7356
+          random k= 100  macro-auPR=0.9520  macro-F1=0.8954  | Wang auPR=0.7609
+          random k= 100  macro-auPR=0.7709  macro-F1=0.7086  | Wang auPR=0.5057
+             hvg k= 200  macro-auPR=0.9994  macro-F1=0.9923  | Wang auPR=0.9669
+              de k= 200  macro-auPR=0.9997  macro-F1=0.9950  | Wang auPR=0.9637
+          random k= 200  macro-auPR=0.9833  macro-F1=0.9464  | Wang auPR=0.8532
+          random k= 200  macro-auPR=0.9831  macro-F1=0.9441  | Wang auPR=0.8260
+          random k= 200  macro-auPR=0.9683  macro-F1=0.9165  | Wang auPR=0.7965
+  training concrete k=50
+  ep   0 T=1.582 cls=0.217 acc=0.938 adv=0.000 adv_acc=0.000 unique=40
+  ep   5 T=0.487 cls=0.023 acc=0.994 adv=0.000 adv_acc=0.000 unique=50
+  ep  10 T=0.150 cls=0.016 acc=0.996 adv=0.000 adv_acc=0.000 unique=50
+  ep  15 T=0.046 cls=0.012 acc=0.996 adv=0.000 adv_acc=0.000 unique=50
+  ep  20 T=0.014 cls=0.009 acc=0.997 adv=0.000 adv_acc=0.000 unique=50
+  ep  25 T=0.010 cls=0.009 acc=0.997 adv=0.000 adv_acc=0.000 unique=50
+  ep  29 T=0.010 cls=0.007 acc=0.998 adv=0.000 adv_acc=0.000 unique=50
+    concrete_mlp k=  50  macro-auPR=0.9991  macro-F1=0.9913  | Wang auPR=0.9162
+        concrete k=  50  macro-auPR=0.9990  macro-F1=0.9907  | Wang auPR=0.9373
+  training concrete_adv1 k=50
+  ep   0 T=1.582 cls=0.216 acc=0.940 adv=4.268 adv_acc=0.027 unique=41
+  ep   5 T=0.487 cls=0.047 acc=0.986 adv=4.229 adv_acc=0.035 unique=50
+  ep  10 T=0.150 cls=0.063 acc=0.981 adv=4.199 adv_acc=0.041 unique=50
+  ep  15 T=0.046 cls=0.061 acc=0.982 adv=4.160 adv_acc=0.045 unique=50
+  ep  20 T=0.014 cls=0.062 acc=0.980 adv=4.140 adv_acc=0.049 unique=49
+  ep  25 T=0.010 cls=0.067 acc=0.980 adv=4.124 adv_acc=0.051 unique=49
+  ep  29 T=0.010 cls=0.058 acc=0.982 adv=4.106 adv_acc=0.054 unique=47
+  concrete_adv1_mlp k=  50  macro-auPR=0.9974  macro-F1=0.9816  | Wang auPR=0.9225
+   concrete_adv1 k=  50  macro-auPR=0.9979  macro-F1=0.9869  | Wang auPR=0.9504
+
+=== fold 4: train 219,562 cells / 83 donors; test 53,125 cells / 21 donors (918s)
+         full_lr k=3000  macro-auPR=1.0000  macro-F1=0.9992  | Wang auPR=0.9677
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+             hvg k=  10  macro-auPR=0.5100  macro-F1=0.4861  | Wang auPR=0.3699
+              de k=  10  macro-auPR=0.9590  macro-F1=0.9070  | Wang auPR=0.7892
+          random k=  10  macro-auPR=0.2481  macro-F1=0.2223  | Wang auPR=0.1879
+          random k=  10  macro-auPR=0.2390  macro-F1=0.1937  | Wang auPR=0.1943
+          random k=  10  macro-auPR=0.3100  macro-F1=0.2943  | Wang auPR=0.2424
+             hvg k=  25  macro-auPR=0.8387  macro-F1=0.8001  | Wang auPR=0.6467
+              de k=  25  macro-auPR=0.9963  macro-F1=0.9738  | Wang auPR=0.8970
+          random k=  25  macro-auPR=0.5466  macro-F1=0.5014  | Wang auPR=0.3828
+          random k=  25  macro-auPR=0.2596  macro-F1=0.2339  | Wang auPR=0.1768
+          random k=  25  macro-auPR=0.3338  macro-F1=0.3324  | Wang auPR=0.2354
+             hvg k=  50  macro-auPR=0.9817  macro-F1=0.9508  | Wang auPR=0.9133
+              de k=  50  macro-auPR=0.9990  macro-F1=0.9887  | Wang auPR=0.9397
+          random k=  50  macro-auPR=0.7824  macro-F1=0.7233  | Wang auPR=0.5802
+          random k=  50  macro-auPR=0.6346  macro-F1=0.5927  | Wang auPR=0.4306
+          random k=  50  macro-auPR=0.6419  macro-F1=0.5947  | Wang auPR=0.4294
+             hvg k= 100  macro-auPR=0.9985  macro-F1=0.9882  | Wang auPR=0.9619
+              de k= 100  macro-auPR=0.9999  macro-F1=0.9968  | Wang auPR=0.9615
+          random k= 100  macro-auPR=0.8668  macro-F1=0.7958  | Wang auPR=0.6259
+          random k= 100  macro-auPR=0.8620  macro-F1=0.7881  | Wang auPR=0.6544
+          random k= 100  macro-auPR=0.8906  macro-F1=0.8231  | Wang auPR=0.6434
+             hvg k= 200  macro-auPR=0.9997  macro-F1=0.9971  | Wang auPR=0.9645
+              de k= 200  macro-auPR=1.0000  macro-F1=0.9981  | Wang auPR=0.9608
+          random k= 200  macro-auPR=0.9920  macro-F1=0.9624  | Wang auPR=0.8839
+          random k= 200  macro-auPR=0.9889  macro-F1=0.9514  | Wang auPR=0.8442
+          random k= 200  macro-auPR=0.9889  macro-F1=0.9578  | Wang auPR=0.8921
+  training concrete k=50
+  ep   0 T=1.582 cls=0.214 acc=0.940 adv=0.000 adv_acc=0.000 unique=46
+  ep   5 T=0.487 cls=0.024 acc=0.994 adv=0.000 adv_acc=0.000 unique=50
+  ep  10 T=0.150 cls=0.015 acc=0.996 adv=0.000 adv_acc=0.000 unique=50
+  ep  15 T=0.046 cls=0.012 acc=0.997 adv=0.000 adv_acc=0.000 unique=50
+  ep  20 T=0.014 cls=0.009 acc=0.997 adv=0.000 adv_acc=0.000 unique=50
+  ep  25 T=0.010 cls=0.007 acc=0.998 adv=0.000 adv_acc=0.000 unique=50
+  ep  29 T=0.010 cls=0.006 acc=0.998 adv=0.000 adv_acc=0.000 unique=50
+    concrete_mlp k=  50  macro-auPR=0.9998  macro-F1=0.9935  | Wang auPR=0.9383
+        concrete k=  50  macro-auPR=0.9996  macro-F1=0.9943  | Wang auPR=0.9410
+  training concrete_adv1 k=50
+  ep   0 T=1.582 cls=0.212 acc=0.942 adv=4.278 adv_acc=0.027 unique=43
+  ep   5 T=0.487 cls=0.050 acc=0.986 adv=4.236 adv_acc=0.035 unique=50
+  ep  10 T=0.150 cls=0.067 acc=0.981 adv=4.205 adv_acc=0.041 unique=50
+  ep  15 T=0.046 cls=0.069 acc=0.979 adv=4.171 adv_acc=0.047 unique=50
+  ep  20 T=0.014 cls=0.064 acc=0.980 adv=4.142 adv_acc=0.049 unique=50
+  ep  25 T=0.010 cls=0.063 acc=0.980 adv=4.134 adv_acc=0.050 unique=50
+  ep  29 T=0.010 cls=0.064 acc=0.981 adv=4.123 adv_acc=0.052 unique=49
+  concrete_adv1_mlp k=  50  macro-auPR=0.9989  macro-F1=0.9851  | Wang auPR=0.9203
+   concrete_adv1 k=  50  macro-auPR=0.9990  macro-F1=0.9902  | Wang auPR=0.9376
+
+                                       macro_auprc         macro_f1         balanced_acc        
+                                             mean     std     mean     std         mean     std
+split          method            k                                                             
+heldout_donors concrete          50        0.9994  0.0004   0.9931  0.0018       0.9922  0.0027
+               concrete_adv1     50        0.9981  0.0013   0.9875  0.0028       0.9858  0.0042
+               concrete_adv1_mlp 50        0.9978  0.0012   0.9832  0.0026       0.9860  0.0031
+               concrete_mlp      50        0.9994  0.0005   0.9929  0.0023       0.9942  0.0023
+               de                10        0.9602  0.0065   0.9130  0.0076       0.9108  0.0077
+                                 25        0.9961  0.0014   0.9775  0.0037       0.9770  0.0046
+                                 50        0.9988  0.0006   0.9896  0.0020       0.9892  0.0028
+                                 100       0.9997  0.0003   0.9955  0.0018       0.9945  0.0025
+                                 200       0.9998  0.0002   0.9966  0.0018       0.9959  0.0024
+               full_lr           3000      0.9999  0.0001   0.9974  0.0020       0.9967  0.0026
+               hvg               10        0.5148  0.0051   0.4885  0.0048       0.5152  0.0057
+                                 25        0.8085  0.0182   0.7709  0.0175       0.7628  0.0166
+                                 50        0.9641  0.0198   0.9279  0.0255       0.9254  0.0257
+                                 100       0.9977  0.0007   0.9873  0.0015       0.9855  0.0020
+                                 200       0.9996  0.0003   0.9948  0.0023       0.9939  0.0030
+               random            10        0.2565  0.0581   0.2336  0.0683       0.2633  0.0573
+                                 25        0.4397  0.1112   0.4112  0.1037       0.4132  0.0946
+                                 50        0.6807  0.0830   0.6298  0.0684       0.6181  0.0677
+                                 100       0.8816  0.0674   0.8145  0.0663       0.8059  0.0694
+                                 200       0.9835  0.0061   0.9459  0.0119       0.9433  0.0133
+wang2022       concrete          50        0.9438  0.0049   0.9076  0.0048       0.8676  0.0071
+               concrete_adv1     50        0.9460  0.0053   0.9114  0.0047       0.8793  0.0072
+               concrete_adv1_mlp 50        0.9261  0.0081   0.8815  0.0136       0.8830  0.0065
+               concrete_mlp      50        0.9301  0.0086   0.9011  0.0080       0.8705  0.0086
+               de                10        0.7858  0.0093   0.7143  0.0115       0.7829  0.0047
+                                 25        0.9006  0.0072   0.8503  0.0078       0.8259  0.0069
+                                 50        0.9431  0.0020   0.8957  0.0016       0.8629  0.0053
+                                 100       0.9625  0.0006   0.9163  0.0039       0.8703  0.0059
+                                 200       0.9625  0.0013   0.9160  0.0023       0.8681  0.0035
+               full_lr           3000      0.9673  0.0007   0.9209  0.0013       0.8715  0.0019
+               hvg               10        0.3704  0.0008   0.2972  0.0006       0.4332  0.0014
+                                 25        0.6346  0.0093   0.5926  0.0110       0.6581  0.0110
+                                 50        0.8871  0.0253   0.8313  0.0172       0.8513  0.0299
+                                 100       0.9576  0.0026   0.9197  0.0049       0.9120  0.0057
+                                 200       0.9657  0.0011   0.9376  0.0011       0.9072  0.0040
+               random            10        0.1822  0.0323   0.1665  0.0620       0.2244  0.0401
+                                 25        0.2766  0.0689   0.2693  0.0727       0.3317  0.0687
+                                 50        0.4456  0.0695   0.4188  0.0568       0.4972  0.0572
+                                 100       0.6607  0.0717   0.5978  0.0615       0.6548  0.0526
+                                 200       0.8448  0.0257   0.7820  0.0307       0.7898  0.0244
+
+pooled OOF (donor-bootstrap 95% CI):
+            method    k  pooled_macro_auprc  ci_lo  ci_hi
+          full_lr 3000              0.9999 0.9998 1.0000
+              hvg   10              0.5177 0.5042 0.5293
+               de   10              0.9600 0.9526 0.9661
+           random   10              0.3086 0.2920 0.3269
+              hvg   25              0.8117 0.8013 0.8208
+               de   25              0.9959 0.9940 0.9972
+           random   25              0.4559 0.4376 0.4720
+              hvg   50              0.9675 0.9618 0.9720
+               de   50              0.9987 0.9980 0.9993
+           random   50              0.6451 0.6220 0.6637
+              hvg  100              0.9976 0.9963 0.9986
+               de  100              0.9997 0.9994 0.9999
+           random  100              0.8485 0.8267 0.8665
+              hvg  200              0.9995 0.9992 0.9998
+               de  200              0.9998 0.9997 0.9999
+           random  200              0.9831 0.9785 0.9868
+     concrete_mlp   50              0.9994 0.9990 0.9997
+         concrete   50              0.9993 0.9989 0.9996
+concrete_adv1_mlp   50              0.9978 0.9966 0.9988
+    concrete_adv1   50              0.9981 0.9969 0.9990
+done in 2103s -> /Users/skysunmingyang/Documents/Columbia-F26/w4762/ml4fg/results/major_donor

@@ -1,0 +1,311 @@
+[BC_donor] 68,700 cells, 35,449 genes, 14 classes, 104 donors
+/Users/skysunmingyang/Documents/Columbia-F26/w4762/ml4fg/src/retpanel/splits.py:23: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  per_donor = pd.Series(fold).groupby(obs["donor_id"].values).nunique()
+
+=== fold 0: train 55,205 cells / 84 donors; test 13,495 cells / 20 donors (31s)
+         full_lr k=3000  macro-auPR=0.9989  macro-F1=0.9878
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+             hvg k=  10  macro-auPR=0.7860  macro-F1=0.7300
+              de k=  10  macro-auPR=0.9019  macro-F1=0.8381
+          random k=  10  macro-auPR=0.1260  macro-F1=0.0893
+          random k=  10  macro-auPR=0.1248  macro-F1=0.0869
+          random k=  10  macro-auPR=0.0816  macro-F1=0.0503
+             hvg k=  25  macro-auPR=0.9573  macro-F1=0.9161
+              de k=  25  macro-auPR=0.9843  macro-F1=0.9498
+          random k=  25  macro-auPR=0.2512  macro-F1=0.2547
+          random k=  25  macro-auPR=0.1423  macro-F1=0.1253
+          random k=  25  macro-auPR=0.1583  macro-F1=0.1511
+             hvg k=  50  macro-auPR=0.9902  macro-F1=0.9650
+              de k=  50  macro-auPR=0.9963  macro-F1=0.9765
+          random k=  50  macro-auPR=0.4501  macro-F1=0.4267
+          random k=  50  macro-auPR=0.2897  macro-F1=0.2886
+          random k=  50  macro-auPR=0.2211  macro-F1=0.2217
+             hvg k= 100  macro-auPR=0.9963  macro-F1=0.9787
+              de k= 100  macro-auPR=0.9985  macro-F1=0.9870
+          random k= 100  macro-auPR=0.6961  macro-F1=0.6399
+          random k= 100  macro-auPR=0.2968  macro-F1=0.3024
+          random k= 100  macro-auPR=0.3571  macro-F1=0.3580
+             hvg k= 200  macro-auPR=0.9978  macro-F1=0.9841
+              de k= 200  macro-auPR=0.9990  macro-F1=0.9894
+          random k= 200  macro-auPR=0.8059  macro-F1=0.7253
+          random k= 200  macro-auPR=0.7811  macro-F1=0.7103
+          random k= 200  macro-auPR=0.5053  macro-F1=0.4738
+  training concrete k=50
+  ep   0 T=1.587 cls=1.999 acc=0.358 adv=0.000 adv_acc=0.000 unique=44
+  ep   5 T=0.489 cls=0.133 acc=0.959 adv=0.000 adv_acc=0.000 unique=50
+  ep  10 T=0.151 cls=0.075 acc=0.977 adv=0.000 adv_acc=0.000 unique=50
+  ep  15 T=0.046 cls=0.059 acc=0.982 adv=0.000 adv_acc=0.000 unique=50
+  ep  20 T=0.014 cls=0.052 acc=0.983 adv=0.000 adv_acc=0.000 unique=50
+  ep  25 T=0.010 cls=0.047 acc=0.985 adv=0.000 adv_acc=0.000 unique=50
+  ep  29 T=0.010 cls=0.041 acc=0.986 adv=0.000 adv_acc=0.000 unique=50
+    concrete_mlp k=  50  macro-auPR=0.9977  macro-F1=0.9836
+        concrete k=  50  macro-auPR=0.9972  macro-F1=0.9825
+  training concrete_adv1 k=50
+  ep   0 T=1.587 cls=2.018 acc=0.350 adv=4.333 adv_acc=0.022 unique=43
+  ep   5 T=0.489 cls=0.166 acc=0.949 adv=4.199 adv_acc=0.034 unique=50
+  ep  10 T=0.151 cls=0.140 acc=0.957 adv=4.131 adv_acc=0.046 unique=50
+  ep  15 T=0.046 cls=0.142 acc=0.957 adv=4.105 adv_acc=0.052 unique=50
+  ep  20 T=0.014 cls=0.136 acc=0.958 adv=4.073 adv_acc=0.056 unique=50
+  ep  25 T=0.010 cls=0.142 acc=0.955 adv=4.048 adv_acc=0.059 unique=50
+  ep  29 T=0.010 cls=0.142 acc=0.955 adv=4.040 adv_acc=0.061 unique=49
+  concrete_adv1_mlp k=  50  macro-auPR=0.9941  macro-F1=0.9674
+   concrete_adv1 k=  50  macro-auPR=0.9947  macro-F1=0.9701
+
+=== fold 1: train 54,710 cells / 80 donors; test 13,990 cells / 24 donors (79s)
+         full_lr k=3000  macro-auPR=0.9983  macro-F1=0.9855
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+             hvg k=  10  macro-auPR=0.7149  macro-F1=0.6605
+              de k=  10  macro-auPR=0.9075  macro-F1=0.8500
+          random k=  10  macro-auPR=0.0969  macro-F1=0.0656
+          random k=  10  macro-auPR=0.0979  macro-F1=0.0598
+          random k=  10  macro-auPR=0.0816  macro-F1=0.0502
+             hvg k=  25  macro-auPR=0.9525  macro-F1=0.9054
+              de k=  25  macro-auPR=0.9855  macro-F1=0.9508
+          random k=  25  macro-auPR=0.1982  macro-F1=0.1999
+          random k=  25  macro-auPR=0.2128  macro-F1=0.2167
+          random k=  25  macro-auPR=0.2070  macro-F1=0.2115
+             hvg k=  50  macro-auPR=0.9919  macro-F1=0.9646
+              de k=  50  macro-auPR=0.9967  macro-F1=0.9756
+          random k=  50  macro-auPR=0.2817  macro-F1=0.2817
+          random k=  50  macro-auPR=0.3768  macro-F1=0.3741
+          random k=  50  macro-auPR=0.1529  macro-F1=0.1497
+             hvg k= 100  macro-auPR=0.9966  macro-F1=0.9773
+              de k= 100  macro-auPR=0.9984  macro-F1=0.9842
+          random k= 100  macro-auPR=0.3018  macro-F1=0.3008
+          random k= 100  macro-auPR=0.3076  macro-F1=0.3018
+          random k= 100  macro-auPR=0.2985  macro-F1=0.3021
+             hvg k= 200  macro-auPR=0.9978  macro-F1=0.9832
+              de k= 200  macro-auPR=0.9987  macro-F1=0.9864
+          random k= 200  macro-auPR=0.6696  macro-F1=0.6131
+          random k= 200  macro-auPR=0.7582  macro-F1=0.6889
+          random k= 200  macro-auPR=0.6658  macro-F1=0.6031
+  training concrete k=50
+  ep   0 T=1.587 cls=1.979 acc=0.373 adv=0.000 adv_acc=0.000 unique=41
+  ep   5 T=0.489 cls=0.163 acc=0.950 adv=0.000 adv_acc=0.000 unique=50
+  ep  10 T=0.151 cls=0.080 acc=0.975 adv=0.000 adv_acc=0.000 unique=50
+  ep  15 T=0.046 cls=0.064 acc=0.980 adv=0.000 adv_acc=0.000 unique=50
+  ep  20 T=0.014 cls=0.052 acc=0.983 adv=0.000 adv_acc=0.000 unique=50
+  ep  25 T=0.010 cls=0.046 acc=0.985 adv=0.000 adv_acc=0.000 unique=50
+  ep  29 T=0.010 cls=0.044 acc=0.985 adv=0.000 adv_acc=0.000 unique=50
+    concrete_mlp k=  50  macro-auPR=0.9978  macro-F1=0.9812
+        concrete k=  50  macro-auPR=0.9972  macro-F1=0.9803
+  training concrete_adv1 k=50
+  ep   0 T=1.587 cls=1.962 acc=0.376 adv=4.293 adv_acc=0.024 unique=45
+  ep   5 T=0.489 cls=0.171 acc=0.946 adv=4.168 adv_acc=0.036 unique=49
+  ep  10 T=0.151 cls=0.124 acc=0.961 adv=4.107 adv_acc=0.047 unique=50
+  ep  15 T=0.046 cls=0.137 acc=0.957 adv=4.094 adv_acc=0.053 unique=50
+  ep  20 T=0.014 cls=0.129 acc=0.960 adv=4.053 adv_acc=0.057 unique=50
+  ep  25 T=0.010 cls=0.117 acc=0.963 adv=4.006 adv_acc=0.064 unique=50
+  ep  29 T=0.010 cls=0.127 acc=0.960 adv=4.019 adv_acc=0.063 unique=48
+  concrete_adv1_mlp k=  50  macro-auPR=0.9942  macro-F1=0.9700
+   concrete_adv1 k=  50  macro-auPR=0.9952  macro-F1=0.9735
+
+=== fold 2: train 54,635 cells / 84 donors; test 14,065 cells / 20 donors (125s)
+         full_lr k=3000  macro-auPR=0.9982  macro-F1=0.9864
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+             hvg k=  10  macro-auPR=0.7629  macro-F1=0.7065
+              de k=  10  macro-auPR=0.8913  macro-F1=0.8293
+          random k=  10  macro-auPR=0.1327  macro-F1=0.1069
+          random k=  10  macro-auPR=0.0943  macro-F1=0.0548
+          random k=  10  macro-auPR=0.0849  macro-F1=0.0520
+             hvg k=  25  macro-auPR=0.9439  macro-F1=0.8915
+              de k=  25  macro-auPR=0.9812  macro-F1=0.9418
+          random k=  25  macro-auPR=0.1493  macro-F1=0.1364
+          random k=  25  macro-auPR=0.1458  macro-F1=0.1521
+          random k=  25  macro-auPR=0.1044  macro-F1=0.0940
+             hvg k=  50  macro-auPR=0.9864  macro-F1=0.9538
+              de k=  50  macro-auPR=0.9934  macro-F1=0.9691
+          random k=  50  macro-auPR=0.3160  macro-F1=0.3004
+          random k=  50  macro-auPR=0.1922  macro-F1=0.1899
+          random k=  50  macro-auPR=0.3242  macro-F1=0.3220
+             hvg k= 100  macro-auPR=0.9946  macro-F1=0.9724
+              de k= 100  macro-auPR=0.9968  macro-F1=0.9823
+          random k= 100  macro-auPR=0.4790  macro-F1=0.4579
+          random k= 100  macro-auPR=0.5709  macro-F1=0.5295
+          random k= 100  macro-auPR=0.5303  macro-F1=0.5010
+             hvg k= 200  macro-auPR=0.9963  macro-F1=0.9773
+              de k= 200  macro-auPR=0.9980  macro-F1=0.9855
+          random k= 200  macro-auPR=0.5561  macro-F1=0.5096
+          random k= 200  macro-auPR=0.7538  macro-F1=0.6787
+          random k= 200  macro-auPR=0.7073  macro-F1=0.6450
+  training concrete k=50
+  ep   0 T=1.587 cls=1.941 acc=0.383 adv=0.000 adv_acc=0.000 unique=42
+  ep   5 T=0.489 cls=0.151 acc=0.954 adv=0.000 adv_acc=0.000 unique=50
+  ep  10 T=0.151 cls=0.073 acc=0.978 adv=0.000 adv_acc=0.000 unique=50
+  ep  15 T=0.046 cls=0.059 acc=0.982 adv=0.000 adv_acc=0.000 unique=50
+  ep  20 T=0.014 cls=0.051 acc=0.984 adv=0.000 adv_acc=0.000 unique=50
+  ep  25 T=0.010 cls=0.045 acc=0.986 adv=0.000 adv_acc=0.000 unique=50
+  ep  29 T=0.010 cls=0.042 acc=0.987 adv=0.000 adv_acc=0.000 unique=50
+    concrete_mlp k=  50  macro-auPR=0.9962  macro-F1=0.9742
+        concrete k=  50  macro-auPR=0.9953  macro-F1=0.9746
+  training concrete_adv1 k=50
+  ep   0 T=1.587 cls=1.973 acc=0.374 adv=4.331 adv_acc=0.023 unique=46
+  ep   5 T=0.489 cls=0.148 acc=0.955 adv=4.180 adv_acc=0.036 unique=50
+  ep  10 T=0.151 cls=0.125 acc=0.962 adv=4.136 adv_acc=0.047 unique=50
+  ep  15 T=0.046 cls=0.130 acc=0.959 adv=4.111 adv_acc=0.050 unique=50
+  ep  20 T=0.014 cls=0.141 acc=0.955 adv=4.091 adv_acc=0.052 unique=50
+  ep  25 T=0.010 cls=0.128 acc=0.959 adv=4.063 adv_acc=0.056 unique=49
+  ep  29 T=0.010 cls=0.128 acc=0.959 adv=4.047 adv_acc=0.060 unique=49
+  concrete_adv1_mlp k=  50  macro-auPR=0.9924  macro-F1=0.9628
+   concrete_adv1 k=  50  macro-auPR=0.9936  macro-F1=0.9698
+
+=== fold 3: train 54,954 cells / 84 donors; test 13,746 cells / 20 donors (172s)
+         full_lr k=3000  macro-auPR=0.9989  macro-F1=0.9868
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+             hvg k=  10  macro-auPR=0.7775  macro-F1=0.7232
+              de k=  10  macro-auPR=0.9050  macro-F1=0.8397
+          random k=  10  macro-auPR=0.0873  macro-F1=0.0646
+          random k=  10  macro-auPR=0.0780  macro-F1=0.0308
+          random k=  10  macro-auPR=0.1082  macro-F1=0.0892
+             hvg k=  25  macro-auPR=0.9497  macro-F1=0.9005
+              de k=  25  macro-auPR=0.9848  macro-F1=0.9486
+          random k=  25  macro-auPR=0.1509  macro-F1=0.1356
+          random k=  25  macro-auPR=0.1655  macro-F1=0.1579
+          random k=  25  macro-auPR=0.1066  macro-F1=0.1047
+             hvg k=  50  macro-auPR=0.9926  macro-F1=0.9702
+              de k=  50  macro-auPR=0.9970  macro-F1=0.9778
+          random k=  50  macro-auPR=0.3062  macro-F1=0.2974
+          random k=  50  macro-auPR=0.2295  macro-F1=0.2374
+          random k=  50  macro-auPR=0.1451  macro-F1=0.1553
+             hvg k= 100  macro-auPR=0.9970  macro-F1=0.9799
+              de k= 100  macro-auPR=0.9984  macro-F1=0.9836
+          random k= 100  macro-auPR=0.5795  macro-F1=0.5284
+          random k= 100  macro-auPR=0.4226  macro-F1=0.4057
+          random k= 100  macro-auPR=0.4137  macro-F1=0.3908
+             hvg k= 200  macro-auPR=0.9982  macro-F1=0.9843
+              de k= 200  macro-auPR=0.9989  macro-F1=0.9871
+          random k= 200  macro-auPR=0.7050  macro-F1=0.6402
+          random k= 200  macro-auPR=0.7304  macro-F1=0.6723
+          random k= 200  macro-auPR=0.6222  macro-F1=0.5738
+  training concrete k=50
+  ep   0 T=1.587 cls=1.990 acc=0.363 adv=0.000 adv_acc=0.000 unique=43
+  ep   5 T=0.489 cls=0.153 acc=0.952 adv=0.000 adv_acc=0.000 unique=50
+  ep  10 T=0.151 cls=0.081 acc=0.975 adv=0.000 adv_acc=0.000 unique=50
+  ep  15 T=0.046 cls=0.067 acc=0.978 adv=0.000 adv_acc=0.000 unique=50
+  ep  20 T=0.014 cls=0.058 acc=0.981 adv=0.000 adv_acc=0.000 unique=50
+  ep  25 T=0.010 cls=0.051 acc=0.984 adv=0.000 adv_acc=0.000 unique=50
+  ep  29 T=0.010 cls=0.047 acc=0.984 adv=0.000 adv_acc=0.000 unique=50
+    concrete_mlp k=  50  macro-auPR=0.9975  macro-F1=0.9793
+        concrete k=  50  macro-auPR=0.9970  macro-F1=0.9777
+  training concrete_adv1 k=50
+  ep   0 T=1.587 cls=1.970 acc=0.365 adv=4.338 adv_acc=0.022 unique=45
+  ep   5 T=0.489 cls=0.154 acc=0.952 adv=4.166 adv_acc=0.038 unique=50
+  ep  10 T=0.151 cls=0.130 acc=0.959 adv=4.112 adv_acc=0.050 unique=50
+  ep  15 T=0.046 cls=0.142 acc=0.956 adv=4.093 adv_acc=0.051 unique=50
+  ep  20 T=0.014 cls=0.126 acc=0.960 adv=4.044 adv_acc=0.060 unique=50
+  ep  25 T=0.010 cls=0.117 acc=0.963 adv=4.002 adv_acc=0.064 unique=50
+  ep  29 T=0.010 cls=0.126 acc=0.959 adv=4.001 adv_acc=0.065 unique=50
+  concrete_adv1_mlp k=  50  macro-auPR=0.9941  macro-F1=0.9674
+   concrete_adv1 k=  50  macro-auPR=0.9950  macro-F1=0.9717
+
+=== fold 4: train 55,296 cells / 84 donors; test 13,404 cells / 20 donors (220s)
+         full_lr k=3000  macro-auPR=0.9993  macro-F1=0.9896
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: ImplicitModificationWarning: Transforming to str index.
+  return dispatch(args[0].__class__)(*args, **kw)
+             hvg k=  10  macro-auPR=0.7245  macro-F1=0.6728
+              de k=  10  macro-auPR=0.9129  macro-F1=0.8509
+          random k=  10  macro-auPR=0.1469  macro-F1=0.1131
+          random k=  10  macro-auPR=0.0942  macro-F1=0.0650
+          random k=  10  macro-auPR=0.0805  macro-F1=0.0481
+             hvg k=  25  macro-auPR=0.9521  macro-F1=0.9060
+              de k=  25  macro-auPR=0.9855  macro-F1=0.9539
+          random k=  25  macro-auPR=0.1541  macro-F1=0.1439
+          random k=  25  macro-auPR=0.0859  macro-F1=0.0667
+          random k=  25  macro-auPR=0.2442  macro-F1=0.2244
+             hvg k=  50  macro-auPR=0.9882  macro-F1=0.9640
+              de k=  50  macro-auPR=0.9964  macro-F1=0.9786
+          random k=  50  macro-auPR=0.3583  macro-F1=0.3561
+          random k=  50  macro-auPR=0.1965  macro-F1=0.2092
+          random k=  50  macro-auPR=0.2677  macro-F1=0.2780
+             hvg k= 100  macro-auPR=0.9971  macro-F1=0.9813
+              de k= 100  macro-auPR=0.9986  macro-F1=0.9859
+          random k= 100  macro-auPR=0.6200  macro-F1=0.5736
+          random k= 100  macro-auPR=0.4767  macro-F1=0.4576
+          random k= 100  macro-auPR=0.5811  macro-F1=0.5435
+             hvg k= 200  macro-auPR=0.9983  macro-F1=0.9852
+              de k= 200  macro-auPR=0.9991  macro-F1=0.9903
+          random k= 200  macro-auPR=0.8543  macro-F1=0.7812
+          random k= 200  macro-auPR=0.7301  macro-F1=0.6608
+          random k= 200  macro-auPR=0.7371  macro-F1=0.6628
+  training concrete k=50
+  ep   0 T=1.587 cls=2.021 acc=0.355 adv=0.000 adv_acc=0.000 unique=46
+  ep   5 T=0.489 cls=0.154 acc=0.952 adv=0.000 adv_acc=0.000 unique=50
+  ep  10 T=0.151 cls=0.079 acc=0.975 adv=0.000 adv_acc=0.000 unique=50
+  ep  15 T=0.046 cls=0.065 acc=0.980 adv=0.000 adv_acc=0.000 unique=50
+  ep  20 T=0.014 cls=0.056 acc=0.982 adv=0.000 adv_acc=0.000 unique=50
+  ep  25 T=0.010 cls=0.052 acc=0.984 adv=0.000 adv_acc=0.000 unique=50
+  ep  29 T=0.010 cls=0.046 acc=0.985 adv=0.000 adv_acc=0.000 unique=50
+    concrete_mlp k=  50  macro-auPR=0.9978  macro-F1=0.9816
+        concrete k=  50  macro-auPR=0.9974  macro-F1=0.9803
+  training concrete_adv1 k=50
+  ep   0 T=1.587 cls=2.030 acc=0.343 adv=4.347 adv_acc=0.021 unique=47
+  ep   5 T=0.489 cls=0.180 acc=0.944 adv=4.194 adv_acc=0.035 unique=50
+  ep  10 T=0.151 cls=0.134 acc=0.958 adv=4.137 adv_acc=0.047 unique=50
+  ep  15 T=0.046 cls=0.141 acc=0.956 adv=4.105 adv_acc=0.052 unique=50
+  ep  20 T=0.014 cls=0.134 acc=0.958 adv=4.059 adv_acc=0.057 unique=50
+  ep  25 T=0.010 cls=0.135 acc=0.956 adv=4.039 adv_acc=0.061 unique=47
+  ep  29 T=0.010 cls=0.139 acc=0.955 adv=4.033 adv_acc=0.061 unique=46
+  concrete_adv1_mlp k=  50  macro-auPR=0.9941  macro-F1=0.9668
+   concrete_adv1 k=  50  macro-auPR=0.9954  macro-F1=0.9727
+
+                                       macro_auprc         macro_f1         balanced_acc        
+                                             mean     std     mean     std         mean     std
+split          method            k                                                             
+heldout_donors concrete          50        0.9968  0.0008   0.9791  0.0030       0.9790  0.0030
+               concrete_adv1     50        0.9948  0.0007   0.9716  0.0016       0.9711  0.0018
+               concrete_adv1_mlp 50        0.9938  0.0008   0.9669  0.0026       0.9685  0.0020
+               concrete_mlp      50        0.9974  0.0007   0.9800  0.0036       0.9809  0.0032
+               de                10        0.9037  0.0080   0.8416  0.0090       0.8412  0.0093
+                                 25        0.9843  0.0018   0.9490  0.0045       0.9486  0.0042
+                                 50        0.9960  0.0014   0.9755  0.0038       0.9752  0.0038
+                                 100       0.9981  0.0007   0.9846  0.0019       0.9845  0.0019
+                                 200       0.9987  0.0004   0.9877  0.0020       0.9877  0.0020
+               full_lr           3000      0.9987  0.0004   0.9872  0.0016       0.9866  0.0015
+               hvg               10        0.7532  0.0318   0.6986  0.0307       0.7063  0.0296
+                                 25        0.9511  0.0049   0.9039  0.0089       0.9021  0.0089
+                                 50        0.9898  0.0026   0.9635  0.0060       0.9635  0.0062
+                                 100       0.9963  0.0010   0.9779  0.0034       0.9780  0.0032
+                                 200       0.9977  0.0008   0.9828  0.0032       0.9828  0.0029
+               random            10        0.1011  0.0218   0.0684  0.0235       0.1092  0.0241
+                                 25        0.1651  0.0490   0.1583  0.0531       0.1792  0.0519
+                                 50        0.2739  0.0858   0.2725  0.0796       0.2825  0.0790
+                                 100       0.4621  0.1318   0.4395  0.1120       0.4390  0.1101
+                                 200       0.7055  0.0916   0.6426  0.0798       0.6403  0.0797
+
+pooled OOF (donor-bootstrap 95% CI):
+            method    k  pooled_macro_auprc  ci_lo  ci_hi
+          full_lr 3000              0.9987 0.9982 0.9990
+              hvg   10              0.7655 0.7538 0.7781
+               de   10              0.9032 0.8943 0.9115
+           random   10              0.1286 0.1222 0.1350
+           random   10              0.1062 0.1019 0.1109
+           random   10              0.0910 0.0887 0.0937
+              hvg   25              0.9511 0.9453 0.9562
+               de   25              0.9842 0.9819 0.9858
+           random   25              0.1962 0.1861 0.2068
+           random   25              0.1629 0.1530 0.1727
+           random   25              0.1775 0.1643 0.1892
+              hvg   50              0.9899 0.9880 0.9914
+               de   50              0.9960 0.9950 0.9967
+           random   50              0.3619 0.3424 0.3790
+           random   50              0.2740 0.2562 0.2881
+           random   50              0.2375 0.2212 0.2523
+              hvg  100              0.9963 0.9952 0.9969
+               de  100              0.9981 0.9976 0.9985
+           random  100              0.5612 0.5257 0.5939
+           random  100              0.4384 0.4183 0.4628
+           random  100              0.4539 0.4293 0.4778
+              hvg  200              0.9976 0.9969 0.9981
+               de  200              0.9987 0.9982 0.9990
+           random  200              0.7335 0.7046 0.7582
+           random  200              0.7622 0.7465 0.7770
+           random  200              0.6593 0.6404 0.6793
+     concrete_mlp   50              0.9974 0.9967 0.9979
+         concrete   50              0.9968 0.9960 0.9973
+concrete_adv1_mlp   50              0.9935 0.9922 0.9944
+    concrete_adv1   50              0.9948 0.9936 0.9955
+done in 832s -> /Users/skysunmingyang/Documents/Columbia-F26/w4762/ml4fg/results/BC_donor

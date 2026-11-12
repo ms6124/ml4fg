@@ -1,0 +1,115 @@
+HRCA all-cells obs: (3177310, 55)
+
+study_name:
+study_name
+Chen_ancestry        1352129
+Chen_a               1062102
+Chen_b_GSE226108      269400
+Shekhar_GSE237204     177371
+Chen_rgc              162687
+Chen_c_GSE247157      153621
+
+institute:
+institute
+Baylor College of Medicine    2999939
+Harvard University             177371
+
+cell_type:
+cell_type
+retinal rod cell                    1066056
+GABAergic amacrine cell              362866
+Mueller cell                         221612
+OFF midget ganglion cell             200402
+ON midget ganglion cell              151685
+flat midget bipolar cell             144086
+glycinergic amacrine cell            131207
+retinal cone cell                    118559
+invaginating midget bipolar cell     106152
+rod bipolar cell                     101199
+H1 horizontal cell                    68583
+diffuse bipolar 2 cell                68176
+amacrine cell                         57236
+retinal bipolar neuron                52358
+diffuse bipolar 1 cell                50429
+diffuse bipolar 4 cell                49157
+diffuse bipolar 3b cell               35342
+retinal ganglion cell                 31230
+giant bipolar cell                    25269
+diffuse bipolar 3a cell               21827
+starburst amacrine cell               20270
+diffuse bipolar 6 cell                18587
+OFFx cell                             15495
+astrocyte                             14085
+H2 horizontal cell                    11965
+OFF parasol ganglion cell             10104
+S cone cell                            8501
+ON parasol ganglion cell               6184
+microglial cell                        4894
+ON-blue cone bipolar cell              2931
+
+tissue:
+tissue
+peripheral region of retina    1568477
+macula lutea                   1077597
+fovea centralis                 434131
+macula lutea proper              97105
+
+is_primary_data:
+is_primary_data
+True     2907910
+False     269400
+
+cells with a fine subtype label: 1607844
+cells from Wang-like studies/donors (excluded): 0
+author-metric pre-QC: keeping 3,177,310/3,177,310
+dropping rare major classes: ['RPE']
+
+selected: major-task 273,030  subtype-task 274,965  union 510,427
+  rows         0-  100,000: kept 15,352
+  rows   100,000-  200,000: kept 24,976
+  rows   200,000-  300,000: kept 26,882
+  rows   300,000-  400,000: kept 28,024
+  rows   400,000-  500,000: kept 63,772
+  rows   500,000-  600,000: kept 46,365
+  rows   600,000-  700,000: kept 5,539
+  rows   700,000-  800,000: kept 4,738
+  rows   800,000-  900,000: kept 10,040
+  rows   900,000-1,000,000: kept 13,916
+  rows 1,000,000-1,100,000: kept 20,129
+  rows 1,100,000-1,200,000: kept 20,593
+  rows 1,200,000-1,300,000: kept 29,556
+  rows 1,300,000-1,400,000: kept 9,348
+  rows 1,400,000-1,500,000: kept 14,619
+  rows 1,500,000-1,600,000: kept 9,610
+  rows 1,600,000-1,700,000: kept 9,541
+  rows 1,700,000-1,800,000: kept 1,675
+  rows 1,800,000-1,900,000: kept 823
+  rows 1,900,000-2,000,000: kept 2,057
+  rows 2,000,000-2,100,000: kept 2,226
+  rows 2,100,000-2,200,000: kept 1,686
+  rows 2,200,000-2,300,000: kept 4,320
+  rows 2,300,000-2,400,000: kept 7,940
+  rows 2,400,000-2,500,000: kept 4,143
+  rows 2,500,000-2,600,000: kept 3,044
+  rows 2,600,000-2,700,000: kept 6,715
+  rows 2,700,000-2,800,000: kept 15,554
+  rows 2,800,000-2,900,000: kept 37,681
+  rows 2,900,000-3,000,000: kept 20,520
+  rows 3,000,000-3,100,000: kept 16,294
+  rows 3,100,000-3,177,310: kept 32,749
+genes: HRCA 35475, Wang 35451, shared 35449
+QC: keeping 510,242/510,427 cells (min_genes=300, pct_mt<=10.0)
+Scrublet doublet rate (median over donors): 0.0006614213335909689
+removed 505 predicted doublets; final 509,737 cells
+major
+AC           41413
+Rod          38453
+BC           37703
+MG           36336
+RGC          35664
+HC           33167
+Cone         32759
+Astro        12311
+Microglia     4881
+subtypes: 95
+wrote /Users/skysunmingyang/Documents/Columbia-F26/w4762/ml4fg/data/processed/hrca_dev.h5ad

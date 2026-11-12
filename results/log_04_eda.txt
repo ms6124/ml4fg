@@ -1,0 +1,43 @@
+                dataset   cells   genes  donors  studies  major_classes
+HRCA full atlas (snRNA) 3177310     NaN     104        6             10
+   HRCA dev: major task  272687 35449.0     104        6              9
+ HRCA dev: subtype task  274558 35449.0     104        6              3
+       Wang 2022 (test)   51504 35451.0       4        1              9
+
+HRCA studies x institute:
+ study_name         institute                 
+Chen_a             Baylor College of Medicine    20
+Chen_ancestry      Baylor College of Medicine    59
+Chen_b_GSE226108   Baylor College of Medicine     5
+Chen_c_GSE247157   Baylor College of Medicine    20
+Chen_rgc           Baylor College of Medicine     7
+Shekhar_GSE237204  Harvard University            17
+Name: donor_id, dtype: int64
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: UserWarning: zero-centering a sparse array/matrix densifies it.
+  return dispatch(args[0].__class__)(*args, **kw)
+/Users/skysunmingyang/Documents/Columbia-F26/w4762/ml4fg/scripts/04_eda.py:134: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+  resid = pcs[:, :20] - pd.DataFrame(pcs[:, :20]).groupby(c.obs.major.values).transform("mean").values
+ PC  var_ratio  R2_class  R2_donor  R2_study  R2_donor_within_class
+  1      0.065     0.962     0.076     0.071                  0.092
+  2      0.051     0.965     0.027     0.014                  0.052
+  3      0.036     0.960     0.016     0.011                  0.037
+  4      0.025     0.935     0.022     0.030                  0.026
+  5      0.021     0.903     0.028     0.009                  0.047
+  6      0.019     0.910     0.082     0.072                  0.091
+  7      0.017     0.896     0.026     0.020                  0.032
+  8      0.016     0.918     0.033     0.006                  0.033
+  9      0.008     0.027     0.015     0.003                  0.016
+ 10      0.006     0.034     0.029     0.012                  0.037
+ 11      0.005     0.007     0.111     0.056                  0.115
+ 12      0.005     0.001     0.009     0.002                  0.009
+ 13      0.005     0.021     0.027     0.007                  0.027
+ 14      0.004     0.009     0.363     0.304                  0.365
+ 15      0.004     0.002     0.007     0.003                  0.007
+ 16      0.004     0.002     0.149     0.043                  0.150
+ 17      0.003     0.004     0.025     0.014                  0.025
+ 18      0.003     0.013     0.200     0.048                  0.207
+ 19      0.003     0.003     0.005     0.001                  0.005
+ 20      0.003     0.004     0.026     0.004                  0.027
+/opt/homebrew/Cellar/python@3.13/3.13.3/Frameworks/Python.framework/Versions/3.13/lib/python3.13/functools.py:934: UserWarning: zero-centering a sparse array/matrix densifies it.
+  return dispatch(args[0].__class__)(*args, **kw)
+EDA done.

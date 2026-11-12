@@ -1,0 +1,5 @@
+dataset,cells,genes,donors,studies,major_classes
+HRCA full atlas (snRNA),3177310,,104,6,10
+HRCA dev: major task,272687,35449.0,104,6,9
+HRCA dev: subtype task,274558,35449.0,104,6,3
+Wang 2022 (test),51504,35451.0,4,1,9

@@ -1,0 +1,28 @@
+AnnData object with n_obs × n_vars = 51645 × 35451
+    obs: 'biosample_id', 'donor_id', 'cell_type_ontology_term_id', 'disease_ontology_term_id', 'tissue_ontology_term_id', 'assay_ontology_term_id', 'cell_type__custom', 'development_stage_ontology_term_id', 'sex_ontology_term_id', 'suspension_type', 'is_primary_data', 'age', 'self_reported_ethnicity_ontology_term_id', 'tissue_type', 'cell_type', 'assay', 'disease', 'sex', 'tissue', 'self_reported_ethnicity', 'development_stage', 'observation_joinid'
+    var: 'feature_is_filtered', 'feature_name', 'feature_reference', 'feature_biotype', 'feature_length', 'feature_type'
+    uns: 'citation', 'is_pre_analysis', 'organism', 'organism_ontology_term_id', 'schema_reference', 'schema_version', 'title'
+    obsm: 'X_UMAP'
+    layers: None (.X)
+recovered counts; max |x - round(x)| before rounding = 6.45e-04
+QC: keeping 51,518/51,645 cells (min_genes=300, pct_mt<=10.0)
+Scrublet predicted doublet rate per donor:
+ donor_id
+LGS1    0.000332
+LGS2    0.000000
+LGS3    0.000000
+LVG1    0.000798
+Name: predicted_doublet, dtype: float64
+removed 14 predicted doublets; final 51,504 cells
+major
+Rod          31973
+BC            8836
+MG            3667
+AC            2723
+Cone          2216
+HC            1133
+RGC            493
+Astro          232
+Microglia      231
+Name: count, dtype: int64
+wrote /Users/skysunmingyang/Documents/Columbia-F26/w4762/ml4fg/data/processed/wang_test.h5ad

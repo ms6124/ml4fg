@@ -57,9 +57,16 @@ class GradReverse(torch.autograd.Function):
 class ConcreteSelector(nn.Module):
     """k selector rows, each a categorical distribution over G genes (Abid et al. 2019)."""
 
-    def __init__(self, n_genes: int, k: int):
+    def __init__(self, n_genes: int, k: int, init_cols=None, init_scale: float = 20.0):
         super().__init__()
-        self.logits = nn.Parameter(torch.randn(k, n_genes) * 0.01)
+        L = torch.randn(k, n_genes) * 0.01
+        if init_cols is not None:
+            # Warm start (e.g. from a DE panel): row j starts peaked on gene init_cols[j].
+            # With T0 = 2, a logit gap of 20 puts ~90% of each row's mass on its seed gene
+            # among ~3,000 genes, so training starts at the DE panel but can still move.
+            init_cols = np.asarray(init_cols)[:k]
+            L[np.arange(len(init_cols)), torch.as_tensor(init_cols)] += init_scale
+        self.logits = nn.Parameter(L)
         self.temperature = 10.0
 
     def forward(self, x: torch.Tensor) -> torch.Tensor:
@@ -103,9 +110,9 @@ def mlp(d_in: int, d_out: int, hidden: int = 256, dropout: float = 0.2) -> nn.Se
 
 
 class PanelNet(nn.Module):
-    def __init__(self, n_genes, k, n_classes, n_donors=0, hidden=256):
+    def __init__(self, n_genes, k, n_classes, n_donors=0, hidden=256, init_cols=None, init_scale=20.0):
         super().__init__()
-        self.selector = ConcreteSelector(n_genes, k)
+        self.selector = ConcreteSelector(n_genes, k, init_cols, init_scale)
         self.clf = mlp(k, n_classes, hidden)
         # Donor head sees selected genes *and* the true class, so it is penalised only for
         # donor signal beyond what is explained by class composition.
@@ -128,6 +135,8 @@ class ConcreteConfig:
     hidden: int = 256
     balanced: bool = True       # inverse-frequency class weights (macro metrics reward rare classes)
     seed: int = 0
+    init_cols: list | None = None  # optional warm start: one gene column index per selector row
+    init_scale: float = 20.0
 
 
 def train_concrete(Z: np.ndarray, y: np.ndarray, donors: np.ndarray | None, n_classes: int,
@@ -141,7 +150,8 @@ def train_concrete(Z: np.ndarray, y: np.ndarray, donors: np.ndarray | None, n_cl
     if use_adv:
         uniq, d_codes = np.unique(donors, return_inverse=True)
         n_donors = len(uniq)
-    net = PanelNet(Z.shape[1], cfg.k, n_classes, n_donors, cfg.hidden).to(dev)
+    net = PanelNet(Z.shape[1], cfg.k, n_classes, n_donors, cfg.hidden,
+                   cfg.init_cols, cfg.init_scale).to(dev)
     head_params = [p for n, p in net.named_parameters() if not n.startswith("selector.")]
     opt = torch.optim.Adam([{"params": head_params, "lr": cfg.lr},
                             {"params": [net.selector.logits], "lr": cfg.selector_lr}])

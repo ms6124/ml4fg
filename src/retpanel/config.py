@@ -1,12 +1,18 @@
-"""Paths, dataset URLs and global constants shared by all scripts."""
+"""Paths, dataset URLs and global constants shared by all scripts.
+
+Set RETPANEL_DATA / RETPANEL_OUT to use another data folder or write results and figures
+elsewhere (e.g. a bucket mount on GCP, or a scratch folder for tests).
+"""
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
-DATA = ROOT / "data"
+DATA = Path(os.environ.get("RETPANEL_DATA", ROOT / "data"))
 RAW = DATA / "raw"
 PROC = DATA / "processed"
-RESULTS = ROOT / "results"
-FIGURES = ROOT / "figures"
+_OUT = Path(os.environ.get("RETPANEL_OUT", ROOT))
+RESULTS = _OUT / "results"
+FIGURES = _OUT / "figures"
 for _d in (RAW, PROC, RESULTS, FIGURES):
     _d.mkdir(parents=True, exist_ok=True)
 
@@ -30,6 +36,6 @@ MIN_CELLS_MAJOR = 2000      # drop major classes rarer than this in the atlas (R
 CAP_PER_DONOR_SUBTYPE = 60  # subtype task: max cells per (donor, subtype)
 MIN_CELLS_SUBTYPE = 300     # drop subtypes with fewer cells than this in the atlas
 
-N_HVG = 3000
+N_HVG = int(os.environ.get("RETPANEL_N_HVG", 3000))  # override only for small smoke tests
 PANEL_SIZES = [10, 25, 50, 100, 200]
 N_FOLDS = 5

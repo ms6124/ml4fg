@@ -53,6 +53,25 @@ Steps 2 and 3 must run in this order because HRCA genes are intersected with the
 * Every panel is scored with the same downstream classifier (logistic regression on the k genes). The end-to-end concrete MLP is reported separately (`concrete_mlp`).
 * Metrics: macro one-vs-rest auPR (primary), per-class auPR, macro-F1, balanced accuracy, and 95 % donor-bootstrap CIs on pooled out-of-fold predictions.
 
+## Final-report pipeline
+
+`bash scripts/run_final.sh [stages]` runs everything below and writes to `results/<task>_<split>_final/`.
+
+| stage | what | script |
+|---|---|---|
+| 1 | concrete at every k, 3 seeds, random vs DE-initialised selector (`--seeds`, `--init`) | `05_benchmark.py` |
+| 2 | lab-held-out split for all tasks; λ sweep for the donor adversary | `05_benchmark.py --split lab` |
+| 3 | paired donor bootstrap (method differences, Wang per-donor auPR) | `10_paired_bootstrap.py` |
+| 3 | post-hoc donor probe on frozen panels | `09_donor_probe.py` |
+| 3 | consensus panels across folds/seeds, scored on Wang | `11_consensus_panels.py` |
+| 3 | ATAC promoter specificity: learned vs DE vs expression-matched null | `12_atac_panels.py` |
+| 3 | precision@k against `resources/retina_markers.csv` | `13_marker_precision.py` |
+| 4 | final figures (`figures/final_*.png`) | `14_final_figures.py` |
+
+`05_benchmark.py` now also saves `oof.npz` (out-of-fold and Wang probabilities, git-ignored) and each
+fold's HVG universe in `panels.json`. `RETPANEL_DATA` / `RETPANEL_OUT` redirect the data and output
+folders, which is handy on a GCP VM.
+
 ## Interim status (2026-11-08)
 
 All runs below are complete. Figures are in `figures/`, tables in `results/` (`summary_all_runs.csv` combines every run).

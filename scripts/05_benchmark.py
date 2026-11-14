@@ -17,6 +17,14 @@ Examples
   python scripts/05_benchmark.py --task BC --ks 10 25 50 100
   python scripts/05_benchmark.py --task major --concrete-ks 50 --adv 0 1
   python scripts/05_benchmark.py --task major --split lab
+  # final-report sweep: concrete at every k, 3 seeds, plain and DE-initialised, lambda sweep
+  python scripts/05_benchmark.py --task RGC --concrete-ks 10 25 50 100 200 --seeds 0 1 2 \
+      --init random de --adv 0 1 --tag final
+
+Outputs (results/<task>_<split>[_tag]/): metrics_per_fold.csv, summary.csv, panels.json
+(gene symbols per fold/method/k, plus each fold's 3,000-HVG universe), pooled_oof_bootstrap.csv,
+per_class_auprc_pooled.csv and oof.npz (out-of-fold + Wang probabilities for --save-oof-ks,
+used by 10_paired_bootstrap.py).
 """
 import argparse
 import json
@@ -47,6 +55,11 @@ p.add_argument("--max-folds", type=int, default=None, help="run only the first N
 p.add_argument("--n-random", type=int, default=3)
 p.add_argument("--concrete-ks", type=int, nargs="*", default=[])
 p.add_argument("--adv", type=float, nargs="*", default=[0.0], help="donor-adversarial lambdas for concrete")
+p.add_argument("--seeds", type=int, nargs="+", default=[SEED], help="concrete training seeds")
+p.add_argument("--init", nargs="+", default=["random"], choices=["random", "de"],
+               help="concrete selector initialisation(s): random logits or warm start from the DE panel")
+p.add_argument("--save-oof-ks", type=int, nargs="*", default=[50],
+               help="panel sizes whose out-of-fold probabilities are saved to oof.npz")
 p.add_argument("--epochs", type=int, default=30)
 p.add_argument("--no-full", action="store_true")
 p.add_argument("--tag", default="")
@@ -55,6 +68,7 @@ args = p.parse_args()
 tag = f"{args.task}_{args.split}{('_' + args.tag) if args.tag else ''}"
 out_dir = RESULTS / tag
 out_dir.mkdir(parents=True, exist_ok=True)
+(out_dir / "per_class_auprc_pooled.csv").unlink(missing_ok=True)  # written in append mode below
 t0 = time.time()
 
 # ------------------------------------------------------------------ data
@@ -96,6 +110,7 @@ symbol = h.var["feature_name"].astype(str)
 # ------------------------------------------------------------------ loop
 records, panels_out = [], {}
 oof = {}  # method -> (n_cells, n_classes) out-of-fold probabilities
+wang_proba = {}  # method key -> {fold: (n_wang, n_shared) probabilities}
 
 
 def evaluate(method, k, f, proba_te, te, extra=None, proba_w=None):
@@ -108,6 +123,8 @@ def evaluate(method, k, f, proba_te, te, extra=None, proba_w=None):
     if proba_w is not None:
         pw = proba_w[:, shared_idx]
         pw = pw / pw.sum(1, keepdims=True).clip(1e-12)
+        if k in args.save_oof_ks or method == "full_lr":
+            wang_proba.setdefault(key, {})[f] = pw.astype(np.float16)
         yw = np.array([shared_idx.index(v) for v in wang["y"]])
         rw = {"method": method, "k": k, "fold": f, "split": "wang2022",
               **summarize(yw, pw, [classes[i] for i in shared_idx])}
@@ -132,6 +149,7 @@ for f in fold_ids:
     Ztr, Zte = sc_.transform(Xtr), sc_.transform(Xte)
     Zw = sc_.transform(wang["X"][:, gpos]) if wang else None
     hvg_list = list(hvg)
+    panels_out[f"fold{f}|hvg_universe|{N_HVG}"] = symbol.loc[hvg_list].tolist()
 
     def run_lr(method, k, cols, extra=None):
         clf = fit_logreg(Ztr[:, cols], y[tr], seed=SEED)
@@ -155,23 +173,33 @@ for f in fold_ids:
             if not m.startswith("random") or m == "random_s0":
                 panels_out[f"fold{f}|{m}|{k}"] = symbol.loc[genes].tolist()
 
+    multi_seed = len(args.seeds) > 1
     for k in args.concrete_ks:
-        for lam in args.adv:
-            name = "concrete" if lam == 0 else f"concrete_adv{lam:g}"
-            print(f"  training {name} k={k}")
-            cfg = ConcreteConfig(k=k, epochs=args.epochs, adv_lambda=lam, seed=SEED)
-            net, hist = train_concrete(Ztr, y[tr], donors[tr], len(classes), cfg)
-            cols = net.selector.panel()
-            genes = [hvg_list[i] for i in cols]
-            panels_out[f"fold{f}|{name}|{k}"] = symbol.loc[genes].tolist()
-            pd.DataFrame(hist).to_csv(out_dir / f"history_fold{f}_{name}_k{k}.csv", index=False)
-            n_unique = net.selector.n_unique_argmax()
-            # end-to-end network (selector argmax + MLP head)
-            pte = predict_concrete(net, Zte)
-            pw = predict_concrete(net, Zw) if wang else None
-            evaluate(name + "_mlp", k, f, pte, te, {"n_unique_argmax": n_unique}, pw)
-            # same downstream classifier as every other panel
-            run_lr(name, k, cols, extra={"n_unique_argmax": n_unique})
+        de_cols = rank_series.loc[de_panel(rankings, k)].values
+        for init in args.init:
+            base = "concrete" if init == "random" else "concrete_deinit"
+            for lam in args.adv:
+                name = base if lam == 0 else f"{base}_adv{lam:g}"
+                for s in args.seeds:
+                    print(f"  training {name} k={k} seed={s}")
+                    cfg = ConcreteConfig(k=k, epochs=args.epochs, adv_lambda=lam, seed=s,
+                                         init_cols=de_cols if init == "de" else None)
+                    net, hist = train_concrete(Ztr, y[tr], donors[tr], len(classes), cfg)
+                    cols = net.selector.panel()
+                    genes = [hvg_list[i] for i in cols]
+                    sfx = f"|s{s}" if multi_seed else ""
+                    panels_out[f"fold{f}|{name}|{k}{sfx}"] = symbol.loc[genes].tolist()
+                    hist_name = f"history_fold{f}_{name}_k{k}" + (f"_s{s}" if multi_seed else "")
+                    pd.DataFrame(hist).to_csv(out_dir / f"{hist_name}.csv", index=False)
+                    extra = {"n_unique_argmax": net.selector.n_unique_argmax()}
+                    if multi_seed:
+                        extra["seed"] = s
+                    # end-to-end network (selector argmax + MLP head)
+                    pte = predict_concrete(net, Zte)
+                    pw = predict_concrete(net, Zw) if wang else None
+                    evaluate(name + "_mlp", k, f, pte, te, dict(extra), pw)
+                    # same downstream classifier as every other panel
+                    run_lr(name, k, cols, extra=dict(extra))
 
     pd.DataFrame(records).to_csv(out_dir / "metrics_per_fold.csv", index=False)
     json.dump(panels_out, open(out_dir / "panels.json", "w"), indent=1)
@@ -190,6 +218,21 @@ for key, P in oof.items():
                                        header=not (out_dir / "per_class_auprc_pooled.csv").exists())
 pooled = pd.DataFrame(pooled)
 pooled.to_csv(out_dir / "pooled_oof_bootstrap.csv", index=False)
+
+# ------------------------------------------------------------------ saved predictions for paired tests
+save = {"y": y, "donors": donors.astype(str), "classes": np.array(classes), "fold": fold}
+for key, P in oof.items():
+    m, k = key.split("|")[:2]
+    if (int(k) in args.save_oof_ks or m == "full_lr") and m != "random":
+        save["oof__" + key.replace("|", "__")] = P.astype(np.float16)
+if wang is not None:
+    save["wang_y"] = np.array([shared_idx.index(v) for v in wang["y"]])
+    save["wang_donors"] = wang["donor"].astype(str)
+    save["wang_classes"] = np.array([classes[i] for i in shared_idx])
+    for key, per_fold in wang_proba.items():
+        if not key.startswith("random"):
+            save["wang__" + key.replace("|", "__")] = np.stack([per_fold[f] for f in sorted(per_fold)])
+np.savez_compressed(out_dir / "oof.npz", **save)
 
 summary = (df.groupby(["split", "method", "k"])[["macro_auprc", "macro_f1", "balanced_acc"]]
            .agg(["mean", "std"]).round(4))

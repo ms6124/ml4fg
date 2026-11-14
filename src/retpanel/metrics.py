@@ -41,6 +41,39 @@ def _weighted_ap(pos_sorted: np.ndarray, w_sorted: np.ndarray) -> float:
     return float((prec * wp).sum() / denom)
 
 
+def paired_donor_bootstrap(y, proba_a, proba_b, donors, n_classes: int, n_boot: int = 1000,
+                           seed: int = 0) -> dict:
+    """Macro-auPR difference (a - b) with a *paired* donor bootstrap.
+
+    Each replicate resamples donors once and scores both methods on the same weights, so
+    the interval reflects the difference itself rather than two overlapping marginal CIs.
+    Returns the point estimate, 95% CI, and a two-sided bootstrap p-value for diff = 0.
+    """
+    rng = np.random.default_rng(seed)
+    uniq, d_idx = np.unique(np.asarray(donors), return_inverse=True)
+    present = [j for j in range(n_classes) if (y == j).any()]
+    prep = []
+    for P in (proba_a, proba_b):
+        orders = {j: np.argsort(-P[:, j], kind="stable") for j in present}
+        prep.append((orders, {j: (y[orders[j]] == j).astype(np.float64) for j in present}))
+
+    def macro(w):
+        return [np.nanmean([_weighted_ap(pos[j], w[orders[j]]) for j in present]) for orders, pos in prep]
+
+    a0, b0 = macro(np.ones(len(y)))
+    diffs = []
+    for _ in range(n_boot):
+        mult = np.bincount(rng.integers(0, len(uniq), len(uniq)), minlength=len(uniq)).astype(np.float64)
+        a, b = macro(mult[d_idx])
+        diffs.append(a - b)
+    diffs = np.asarray(diffs)
+    # floor at 1/n_boot: with B replicates a p-value below 1/B cannot be resolved
+    p = max(2 * min((diffs <= 0).mean(), (diffs >= 0).mean()), 1 / n_boot)
+    lo, hi = np.percentile(diffs, [2.5, 97.5])
+    return {"auprc_a": a0, "auprc_b": b0, "diff": a0 - b0, "ci_lo": lo, "ci_hi": hi,
+            "p_boot": min(p, 1.0), "n_donors": len(uniq), "n_boot": n_boot}
+
+
 def donor_bootstrap(y, proba, donors, classes, n_boot: int = 200, seed: int = 0) -> tuple[float, float]:
     """95% CI of macro auPR from resampling *donors* (not cells) with replacement.
 
